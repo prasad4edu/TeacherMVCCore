@@ -1,0 +1,24 @@
+﻿@model List<TeacherInfo>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @*<h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+    <form method="post" asp-controller="Home" asp-action="Index">
+        <table>
+            <tr>
+                <td>
+                    Teacher
+                </td>
+                <td><select asp-for=@Model. asp-items="@(new SelectList(Model,"TeacherId","TeacherName"))"></select></td>
+            </tr>
+            <tr>
+                <td>
+                        <button asp-controller="Home" asp-action="Index">Click Me</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
