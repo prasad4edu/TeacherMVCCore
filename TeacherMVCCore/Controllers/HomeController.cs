@@ -13,7 +13,8 @@ namespace TeacherMVCCore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly TeacherContext _teacherContext;
-        public List<TeacherInfo> teacherInfos = new List<TeacherInfo>();
+        //public List<TeacherInfo> teacherInfos = new List<TeacherInfo>();
+        public TeacherViewModel teacherViewModel = new TeacherViewModel();
         public HomeController(ILogger<HomeController> logger,TeacherContext teacherContext)
         {
             _logger = logger;
@@ -24,30 +25,16 @@ namespace TeacherMVCCore.Controllers
         {
             try
             {
-                teacherInfos = _teacherContext.TeacherInfos.ToList();
+                teacherViewModel.teacherInfos = _teacherContext.TeacherInfos.ToList();
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            return View(teacherInfos);
+            return View(teacherViewModel);
         }
-        [HttpPost]
-        public IActionResult Index(string TeacherId)
-        { 
-            try
-            {
-                
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            return View();
-        }
-
+       
 
         public IActionResult Privacy()
         {

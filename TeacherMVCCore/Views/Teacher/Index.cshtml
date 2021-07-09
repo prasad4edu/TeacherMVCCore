@@ -1,0 +1,46 @@
+﻿@model IEnumerable<StudentViewModel>
+
+@{
+    ViewData["Title"] = "Student Information";
+}
+
+<h2> @Model.ToList()[0].TeacherName Teacher Student Information</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>                   
+                    @Html.DisplayFor(modelItem => item.StudentId)                   
+                </td>
+                <td>
+                    <a asp-controller="" asp-action="" asp-route-id="@item.StudentName">@item.StudentName</a>
+                </td>
+                <td>
+                    <a asp-controller="TeacherInformation" asp-action="Index" asp-route-id="@item.TeacherName">@item.TeacherName</a>
+                </td>
+                @*<td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
